@@ -8,7 +8,7 @@ public class Player : MonoBehaviour, IDamagable
 {
     [SerializeField] TMP_Text scoreText;
     [SerializeField] FloatVariable health;
-    [SerializeField] PhysicsCharacterController characterController;
+    [SerializeField] public PhysicsCharacterController characterController;
 
     [Header("Events")]
     [SerializeField] IntEvent scoreEvent = default;
@@ -16,6 +16,7 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] VoidEvent playerDeadEvent = default;
     //my stuff :(
     [SerializeField] GameObjectEvent respawnEvent = default;
+    [SerializeField] VoidEvent gameWonEvent = default;
 
     private int score = 0;
     public int Score {  
@@ -31,9 +32,21 @@ public class Player : MonoBehaviour, IDamagable
 	{
 
 	}
+	private void Update()
+	{
+		if(score >= 150)
+        {
+            gameWonEvent.RaiseEvent();
+        }
+	}
 	public void AddPoints(int points)
     {
         Score += points;
+    }
+
+    public void AddHealth()
+    {
+        health.value += 10;
     }
 
 	private void OnEnable()

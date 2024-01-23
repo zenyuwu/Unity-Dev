@@ -15,6 +15,14 @@ public class Damage : MonoBehaviour
 		}
 	}
 
+	private void OnCollisionEnter(Collision collision)
+	{
+		if (oneTime && collision.gameObject.TryGetComponent<IDamagable>(out IDamagable damagable))
+		{
+			damagable.TakeDamage(damage);
+		}
+	}
+
 	private void OnTriggerStay(Collider other)
 	{
 		if(!oneTime && other.gameObject.TryGetComponent<IDamagable>(out IDamagable damagable))

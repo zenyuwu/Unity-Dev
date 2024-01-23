@@ -17,12 +17,15 @@ public class GameManager : Singleton<GameManager>
     //[SerializeField] IntEvent scoreEvent;
     [SerializeField] VoidEvent gameStartEvent;
     [SerializeField] GameObjectEvent respawnEvent;
+    [SerializeField] GameObject gameWonUI;
+    [SerializeField] GameObject gameLostUI;
 
     public enum State
     {
         TITLE,
         START_GAME,
         PLAY_GAME,
+        GAME_WON,
         GAME_OVER
     }
 
@@ -60,11 +63,11 @@ public class GameManager : Singleton<GameManager>
                 titleUI.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+                Lives = 3;
 				break;
 			case State.START_GAME:
                 titleUI.SetActive(false);
                 Timer = 60;
-                Lives = 3;
                 health.value = 100;
 				Cursor.lockState = CursorLockMode.Locked;
 				Cursor.visible = false;
@@ -80,7 +83,15 @@ public class GameManager : Singleton<GameManager>
                     state = State.GAME_OVER;
                 }
 				break;
+            case State.GAME_WON:
+                gameWonUI.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                break;
 			case State.GAME_OVER:
+				gameLostUI.SetActive(true);
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
 				break;
 		}
 
@@ -99,6 +110,22 @@ public class GameManager : Singleton<GameManager>
 
     public void OnPlayerDead()
     {
+        Lives--;
+        if(Lives < 0)
+        {
+            state = State.GAME_OVER;
+            return;
+        }
         state = State.START_GAME;
+    }
+
+    public void OnGameWon()
+    {
+        state = State.GAME_WON;
+    }
+
+    public void OnAddTime()
+    {
+        Timer += 10;
     }
 }

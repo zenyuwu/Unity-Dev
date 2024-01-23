@@ -10,14 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4896085711643990518}
   - component: {fileID: 8489700209404760364}
-  - component: {fileID: 9197470531691295964}
   - component: {fileID: 2265497715217346776}
   - component: {fileID: 6551333871413161767}
   - component: {fileID: 588633086292632705}
   - component: {fileID: 6445156914258901454}
   m_Layer: 0
   m_Name: Coin
-  m_TagString: Untagged
+  m_TagString: coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,20 +49,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angle: 180
---- !u!114 &9197470531691295964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700213798793165894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4afe7be21f2a34d4f8652ddaa7c0f4dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rate: 3
-  amplitude: 0.25
 --- !u!114 &2265497715217346776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb0334b2e9ec20445b03fe39250d76b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupPrefab: {fileID: 1886906540461510, guid: 90f965259c782c74a830882af458b544, type: 3}
+  pickupPrefab: {fileID: 7403342053053801960, guid: 79f3200e180d4294f80fa61647a29952, type: 3}
 --- !u!33 &6551333871413161767
 MeshFilter:
   m_ObjectHideFlags: 0
